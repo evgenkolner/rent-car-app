@@ -17,9 +17,10 @@ public class CarServiceImpl implements CarService {
     private final CarMapper carMapper;
 
     @Override
-    public Car save(CreateCarRequestDto requestDto) {
+    public CarDto save(CreateCarRequestDto requestDto) {
         Car car = carMapper.toModel(requestDto);
-        return carRepository.save(car);
+        Car savedCar = carRepository.save(car);
+        return carMapper.toDto(savedCar);
     }
 
     @Override

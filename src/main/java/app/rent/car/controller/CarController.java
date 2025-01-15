@@ -2,7 +2,6 @@ package app.rent.car.controller;
 
 import app.rent.car.dto.car.CarDto;
 import app.rent.car.dto.car.CreateCarRequestDto;
-import app.rent.car.model.car.Car;
 import app.rent.car.service.car.CarService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +21,7 @@ public class CarController {
     private final CarService carService;
 
     @PostMapping
-    public Car save(@RequestBody CreateCarRequestDto requestDto) {
+    public CarDto save(@RequestBody CreateCarRequestDto requestDto) {
         return carService.save(requestDto);
     }
 
