@@ -1,6 +1,6 @@
 package app.rent.car.model.car;
 
-public enum TypeCar {
+public enum CarType {
     SEDAN,
     SUV,
     HATCHBACK,

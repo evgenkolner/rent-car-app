@@ -1,6 +1,6 @@
 package app.rent.car.model.payment;
 
-public enum Status {
+public enum PaymentStatus {
     PENDING,
     PAID
 }

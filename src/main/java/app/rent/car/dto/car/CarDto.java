@@ -1,6 +1,6 @@
 package app.rent.car.dto.car;
 
-import app.rent.car.model.car.TypeCar;
+import app.rent.car.model.car.CarType;
 import java.math.BigDecimal;
 
 public record CarDto(Long id,
@@ -8,5 +8,5 @@ public record CarDto(Long id,
                      String brand,
                      Integer inventory,
                      BigDecimal dailyFee,
-                     TypeCar typeCar) {
+                     CarType carType) {
 }

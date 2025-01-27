@@ -39,7 +39,7 @@ public class Car {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private TypeCar typeCar;
+    private CarType type;
 
     @Column(nullable = false)
     private boolean isDeleted = false;
