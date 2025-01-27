@@ -29,7 +29,6 @@ public class Rental {
     @Column(nullable = false)
     private LocalDate returnDate;
 
-    @Column(nullable = false)
     private LocalDate actualReturnDate;
 
     @Column(nullable = false)
@@ -39,6 +38,8 @@ public class Rental {
     private Long userId;
 
     @Column(nullable = false)
-    private Boolean isDeleted = false;
+    private Boolean isActive = true;
 
+    @Column(nullable = false)
+    private Boolean isDeleted = false;
 }

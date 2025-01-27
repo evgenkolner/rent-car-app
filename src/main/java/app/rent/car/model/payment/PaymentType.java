@@ -1,6 +1,6 @@
 package app.rent.car.model.payment;
 
-public enum Type {
+public enum PaymentType {
     PAYMENT,
     FINE
 }

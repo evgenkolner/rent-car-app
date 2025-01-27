@@ -27,11 +27,11 @@ public class Payment {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Status status;
+    private PaymentStatus status;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Type type;
+    private PaymentType type;
 
     @Column(nullable = false)
     private Long rentalId;
