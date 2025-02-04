@@ -1,6 +1,7 @@
 package app.rent.car.controller;
 
 import app.rent.car.dto.user.UserLoginRequestDto;
+import app.rent.car.dto.user.UserLoginResponseDto;
 import app.rent.car.dto.user.UserRegistrationRequestDto;
 import app.rent.car.dto.user.UserRegistrationResponseDto;
 import app.rent.car.exception.RegistrationException;
@@ -26,7 +27,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public boolean login(@RequestBody UserLoginRequestDto requestDto) {
-        return authenticationService.login(requestDto);
+    public UserLoginResponseDto login(@RequestBody UserLoginRequestDto requestDto) {
+        return authenticationService.authenticate(requestDto);
     }
 }

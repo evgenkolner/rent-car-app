@@ -7,6 +7,7 @@ import app.rent.car.mapper.UserMapper;
 import app.rent.car.model.user.User;
 import app.rent.car.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserRegistrationResponseDto register(UserRegistrationRequestDto requestDto)
@@ -22,8 +24,8 @@ public class UserServiceImpl implements UserService {
             throw new RegistrationException("This email exists");
         }
         User user = userMapper.toUser(requestDto);
+        user.setPassword(passwordEncoder.encode(requestDto.password()));
         user.setEmail(requestDto.email());
-        user.setPassword(requestDto.password());
         User savedUser = userRepository.save(user);
         return userMapper.toResponse(savedUser);
     }
