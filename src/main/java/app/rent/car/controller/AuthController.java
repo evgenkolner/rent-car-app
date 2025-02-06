@@ -7,12 +7,15 @@ import app.rent.car.dto.user.UserRegistrationResponseDto;
 import app.rent.car.exception.RegistrationException;
 import app.rent.car.security.AuthenticationService;
 import app.rent.car.service.user.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Validated
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/auth")
@@ -22,12 +25,13 @@ public class AuthController {
 
     @PostMapping("/registration")
     public UserRegistrationResponseDto registerUser(
-            @RequestBody UserRegistrationRequestDto requestDto) throws RegistrationException {
+            @RequestBody @Valid UserRegistrationRequestDto requestDto)
+            throws RegistrationException {
         return userService.register(requestDto);
     }
 
     @PostMapping("/login")
-    public UserLoginResponseDto login(@RequestBody UserLoginRequestDto requestDto) {
+    public UserLoginResponseDto login(@RequestBody @Valid UserLoginRequestDto requestDto) {
         return authenticationService.authenticate(requestDto);
     }
 }
