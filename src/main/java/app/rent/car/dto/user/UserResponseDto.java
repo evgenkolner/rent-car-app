@@ -1,6 +1,6 @@
 package app.rent.car.dto.user;
 
-public record UserRegistrationResponseDto(
+public record UserResponseDto(
         Long id,
         String email,
         String firstName,

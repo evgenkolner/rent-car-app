@@ -3,7 +3,7 @@ package app.rent.car.controller;
 import app.rent.car.dto.user.UserLoginRequestDto;
 import app.rent.car.dto.user.UserLoginResponseDto;
 import app.rent.car.dto.user.UserRegistrationRequestDto;
-import app.rent.car.dto.user.UserRegistrationResponseDto;
+import app.rent.car.dto.user.UserResponseDto;
 import app.rent.car.exception.RegistrationException;
 import app.rent.car.security.AuthenticationService;
 import app.rent.car.service.user.UserService;
@@ -24,7 +24,7 @@ public class AuthController {
     private final AuthenticationService authenticationService;
 
     @PostMapping("/registration")
-    public UserRegistrationResponseDto registerUser(
+    public UserResponseDto registerUser(
             @RequestBody @Valid UserRegistrationRequestDto requestDto)
             throws RegistrationException {
         return userService.register(requestDto);
