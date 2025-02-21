@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CarController {
     private final CarService carService;
 
+    @PreAuthorize("hasAuthority('MANAGER')")
     @PostMapping
     public CarDto save(@RequestBody @Valid CreateCarRequestDto requestDto) {
         return carService.save(requestDto);
@@ -34,16 +36,19 @@ public class CarController {
         return carService.findAll();
     }
 
+    @PreAuthorize("hasAuthority('CUSTOMER')")
     @GetMapping("/{id}")
     public CarDto findById(@PathVariable @Positive Long id) {
         return carService.findById(id);
     }
 
+    @PreAuthorize("hasAuthority('MANAGER')")
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable @Positive Long id) {
         carService.deleteById(id);
     }
 
+    @PreAuthorize("hasAuthority('MANAGER')")
     @PutMapping("/{id}")
     public CarDto update(@RequestBody @Valid CreateCarRequestDto requestDto,
                          @PathVariable @Positive Long id) {

@@ -1,11 +1,9 @@
 package app.rent.car.dto.user;
 
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public record UserUpdateDto(
-        @NotBlank
-        String firstName,
-        @NotBlank
-        String lastName
+        @NotNull String firstName,
+        @NotNull String lastName
 ) {
 }
