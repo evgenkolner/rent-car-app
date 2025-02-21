@@ -8,11 +8,12 @@ import app.rent.car.exception.EntityNotFoundException;
 import app.rent.car.exception.RegistrationException;
 import app.rent.car.mapper.UserMapper;
 //import app.rent.car.model.user.RoleName;
+import app.rent.car.model.user.RoleName;
 import app.rent.car.model.user.User;
 import app.rent.car.repository.RoleRepository;
 import app.rent.car.repository.UserRepository;
-//import java.util.Set;
 import jakarta.transaction.Transactional;
+import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,7 +36,7 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.toUser(requestDto);
         user.setPassword(passwordEncoder.encode(requestDto.password()));
         user.setEmail(requestDto.email());
-        //user.setRoles(Set.of(roleRepository.findByName(RoleName.CUSTOMER)));
+        user.setRoles(Set.of(roleRepository.findByName(RoleName.CUSTOMER)));
         User savedUser = userRepository.save(user);
         return userMapper.toResponse(savedUser);
     }
@@ -46,8 +47,7 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByEmail(email).orElseThrow(
                 () -> new EntityNotFoundException("User does not exist"));
         userMapper.updateUser(updateRequest, user);
-        userRepository.save(user);
-        return userMapper.toResponse(user);
+        return userMapper.toResponse(userRepository.save(user));
     }
 
     @Override
