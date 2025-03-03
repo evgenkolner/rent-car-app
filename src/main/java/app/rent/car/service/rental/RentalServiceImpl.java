@@ -2,9 +2,8 @@ package app.rent.car.service.rental;
 
 import app.rent.car.dto.rental.CreateRentalRequestDto;
 import app.rent.car.dto.rental.RentalDto;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class RentalServiceImpl implements RentalService {

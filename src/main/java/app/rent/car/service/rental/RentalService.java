@@ -2,7 +2,6 @@ package app.rent.car.service.rental;
 
 import app.rent.car.dto.rental.CreateRentalRequestDto;
 import app.rent.car.dto.rental.RentalDto;
-
 import java.util.List;
 
 public interface RentalService {
